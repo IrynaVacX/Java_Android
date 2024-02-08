@@ -39,7 +39,7 @@
         <Button
             android:id="@+id/button2"
             android:fontFamily="monospace"
-            android:text=""
+            android:text="@string/empty"
             android:textSize="48sp"
             app:layout_column="1"
             app:layout_columnWeight="@integer/material_motion_duration_long_1"
@@ -50,7 +50,7 @@
         <Button
             android:id="@+id/button3"
             android:fontFamily="monospace"
-            android:text=""
+            android:text="@string/empty"
             android:textSize="48sp"
             app:layout_column="2"
             app:layout_columnWeight="@integer/material_motion_duration_long_1"
@@ -61,7 +61,7 @@
         <Button
             android:id="@+id/button4"
             android:fontFamily="monospace"
-            android:text=""
+            android:text="@string/empty"
             android:textSize="48sp"
             app:layout_column="0"
             app:layout_columnWeight="@integer/material_motion_duration_long_1"
@@ -108,7 +108,7 @@
         <Button
             android:id="@+id/button8"
             android:fontFamily="monospace"
-            android:text=""
+            android:text="@string/empty"
             android:textSize="48sp"
             app:layout_column="1"
             app:layout_columnWeight="@integer/material_motion_duration_long_1"
@@ -208,7 +208,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="NewGame"
-        android:textColor="#C8C1BE"
+        android:textColor="#E0E0E0"
         android:textSize="8pt"
         app:layout_constraintBottom_toBottomOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
