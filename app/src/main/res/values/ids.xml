@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="linearLayout1" type="id" />
+    <item name="img1" type="id" />
+    <item name="cb1" type="id" />
+    <item name="t1" type="id" />
+</resources>
