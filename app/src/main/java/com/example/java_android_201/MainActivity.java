@@ -1,63 +1,39 @@
 package com.example.java_android_201;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
-
-    private boolean isFlashlightOn = false;
-    private MediaPlayer mediaPlayer;
+    private SharedPreferences sharedPreferences;
+    private int count;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        count = sharedPreferences.getInt("count", 0);
+        textView = findViewById(R.id.textView);
+        textView.setText("Четные входы : " + (count / 2));
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 101);
-        } else {
-            toggleFlashlight();
-            toggleMusic();
-        }
-    }
-
-    private void toggleFlashlight()
-    {
-        try {
-            android.hardware.camera2.CameraManager cameraManager = (android.hardware.camera2.CameraManager) getSystemService(CAMERA_SERVICE);
-            String cameraId = cameraManager.getCameraIdList()[0];
-            cameraManager.setTorchMode(cameraId, !isFlashlightOn);
-            isFlashlightOn = !isFlashlightOn;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void toggleMusic() {
-        if(mediaPlayer != null && mediaPlayer.isPlaying())
+        count++;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("count", count);
+        editor.apply();
+        if (count % 2 != 0)
         {
-            mediaPlayer.stop();
+            textView.setText("Четные входы : " + (count / 2));
         }
-        else
-        {
-            mediaPlayer = MediaPlayer.create(this, R.raw.sample_music);
-            mediaPlayer.setLooping(false);
-            mediaPlayer.start();
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
     }
 }
